@@ -1,9 +1,6 @@
 package com.ironman;
 
-import com.ironman.entity.Category;
-import dao.ConnectionCore;
-
-import java.util.Date;
+import com.ironman.dao.ConnectionCore;
 
 public class Main {
     public static void main(String[] args) {
