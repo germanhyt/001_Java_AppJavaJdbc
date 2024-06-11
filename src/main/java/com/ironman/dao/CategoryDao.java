@@ -10,16 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryDao {
+    // Attributes
+    List<Category> categories= new ArrayList<>();
+    Category category;
+    String sqlQuery;
+    Connection connection;
+    ResultSet resultSet;
+    PreparedStatement preparedStatement;
 
     public List<Category> findAll(){
-        // Attributes
-        List<Category> categories= new ArrayList<>();
-
-        Category category;
-        String sqlQuery;
-        Connection connection;
-        ResultSet resultSet;
-        PreparedStatement preparedStatement;
 
         // process
         try{
@@ -56,6 +55,23 @@ public class CategoryDao {
 
         }catch (Exception e){
             System.out.println("CategoryDao::findAll:Error: "+e.getMessage());
+        }finally {
+             try{
+                if(resultSet!=null && !resultSet.isClosed()){
+                    resultSet.close();
+                }
+
+                if(preparedStatement!=null && !preparedStatement.isClosed()){
+                   preparedStatement.close();
+                }
+
+                if(connection!=null && !connection.isClosed()){
+                    connection.close();
+                }
+
+             }catch (Exception e){
+                 System.out.println("CategoryDao::findAll::finally "+e.getMessage());
+             }
         }
 
         // result
