@@ -1,9 +1,10 @@
-package com.ironman.dao;
+package com.ironman.dao.Core;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class ConnectionCore {
+
+public abstract class ConnectionCore {
 
     public Connection getConnection() throws Exception {
         // Attributes

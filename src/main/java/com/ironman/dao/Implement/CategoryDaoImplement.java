@@ -1,7 +1,7 @@
 package com.ironman.dao.Implement;
 
 import com.ironman.dao.CategoryDao;
-import com.ironman.dao.ConnectionCore;
+import com.ironman.dao.Core.ConnectionCore;
 import com.ironman.entity.Category;
 
 import java.sql.Connection;
@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryDaoImplement implements CategoryDao {
+public class CategoryDaoImplement extends ConnectionCore implements CategoryDao {
 
     @Override
     public List<Category> findAll() throws Exception {
@@ -26,7 +26,7 @@ public class CategoryDaoImplement implements CategoryDao {
         // process
         try (
                 // Get connection
-                Connection connection = new ConnectionCore().getConnection();
+                Connection connection = getConnection();
                 // Prepared statement
                 PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
                 //Resultset
@@ -34,21 +34,7 @@ public class CategoryDaoImplement implements CategoryDao {
         ) {
 
             while (resultSet.next()) {
-                category = new Category();
-                category.setId(resultSet.getLong("id"));
-                category.setName(resultSet.getString("name"));
-                category.setUrlKey(resultSet.getString("url_key"));
-                category.setState(resultSet.getString("state"));
-
-                Timestamp createdAt = resultSet.getTimestamp("created_at");
-                if (createdAt != null) {
-                    category.setCreateAt(createdAt.toLocalDateTime());
-                }
-
-                Timestamp updatedAt = resultSet.getTimestamp("updated_at");
-                if (updatedAt != null) {
-                    category.setUpdateTime(updatedAt.toLocalDateTime());
-                }
+                category = mapResultSetToCategory(resultSet);
 
                 categories.add(category);
             }
@@ -57,7 +43,6 @@ public class CategoryDaoImplement implements CategoryDao {
 
         // result
         return categories;
-
 
     }
 
@@ -73,7 +58,7 @@ public class CategoryDaoImplement implements CategoryDao {
 
         try (
                 // Get connection
-                Connection connection = new ConnectionCore().getConnection();
+                Connection connection = getConnection();
                 // Prepared statement
                 PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
 
@@ -88,21 +73,7 @@ public class CategoryDaoImplement implements CategoryDao {
 
             ) {
                 if (resultSet.next()) {
-                    category = new Category();
-                    category.setId(resultSet.getLong("id"));
-                    category.setName(resultSet.getString("name"));
-                    category.setUrlKey(resultSet.getString("url_key"));
-                    category.setState(resultSet.getString("state"));
-
-                    Timestamp createdAt = resultSet.getTimestamp("created_at");
-                    if (createdAt != null) {
-                        category.setCreateAt(createdAt.toLocalDateTime());
-                    }
-
-                    Timestamp updatedAt = resultSet.getTimestamp("updated_at");
-                    if (updatedAt != null) {
-                        category.setUpdateTime(updatedAt.toLocalDateTime());
-                    }
+                    category = mapResultSetToCategory(resultSet);
                 }
             }
         }
@@ -121,7 +92,7 @@ public class CategoryDaoImplement implements CategoryDao {
 
         sqlQuery = "insert into categories ( name, description , url_key , state , created_at) values (?,?,?,?,?)";
         try (
-                Connection connection = new ConnectionCore().getConnection();
+                Connection connection = getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
 
         ) {
@@ -155,7 +126,7 @@ public class CategoryDaoImplement implements CategoryDao {
 
         try (
                 // Connection
-                Connection connection = new ConnectionCore().getConnection();
+                Connection connection = getConnection();
 
                 // Prepare statement
                 PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
@@ -187,7 +158,7 @@ public class CategoryDaoImplement implements CategoryDao {
 
         try (
                 // Connection
-                Connection connection = new ConnectionCore().getConnection();
+                Connection connection = getConnection();
 
                 // Prepare statement
                 PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
@@ -201,6 +172,27 @@ public class CategoryDaoImplement implements CategoryDao {
         }
 
         // Result
+    }
+
+
+    private Category mapResultSetToCategory(ResultSet resultSet) throws Exception {
+        Category category = new Category();
+        category.setId(resultSet.getLong("id"));
+        category.setName(resultSet.getString("name"));
+        category.setUrlKey(resultSet.getString("url_key"));
+        category.setState(resultSet.getString("state"));
+
+        Timestamp createdAt = resultSet.getTimestamp("created_at");
+        if (createdAt != null) {
+            category.setCreateAt(createdAt.toLocalDateTime());
+        }
+
+        Timestamp updatedAt = resultSet.getTimestamp("updated_at");
+        if (updatedAt != null) {
+            category.setUpdateTime(updatedAt.toLocalDateTime());
+        }
+
+        return category;
     }
 
 }
