@@ -17,11 +17,10 @@ public class CategoryDao {
         Category category;
         String sqlQuery;
 
-
-        // process
-
         // sql query
         sqlQuery = "select id, name, description , url_key , state , created_at , updated_at  from categories";
+
+        // process
         try (
                 // Get connection
                 Connection connection = new ConnectionCore().getConnection();
