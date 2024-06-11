@@ -1,5 +1,7 @@
-package com.ironman.dao;
+package com.ironman.dao.Implement;
 
+import com.ironman.dao.CategoryDao;
+import com.ironman.dao.ConnectionCore;
 import com.ironman.entity.Category;
 
 import java.sql.Connection;
@@ -9,12 +11,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface CategoryDao {
+public class CategoryDaoImplement implements CategoryDao {
 
-    List<Category> findAll() throws Exception;
-    Category findById(Long id) throws Exception;
-
-    /*
+    @Override
     public List<Category> findAll() throws Exception {
         // Attributes
         List<Category> categories = new ArrayList<>();
@@ -58,9 +57,13 @@ public interface CategoryDao {
 
         // result
         return categories;
+
+
     }
 
+    @Override
     public Category findById(Long id) throws Exception {
+
         // Attributes
         Category category = null;
         String sqlQuery;
@@ -108,5 +111,4 @@ public interface CategoryDao {
         return category;
     }
 
-    */
 }

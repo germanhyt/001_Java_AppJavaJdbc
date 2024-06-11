@@ -1,6 +1,7 @@
 package com.ironman;
 
 import com.ironman.dao.CategoryDao;
+import com.ironman.dao.Implement.CategoryDaoImplement;
 import com.ironman.entity.Category;
 
 import java.util.List;
@@ -41,7 +42,7 @@ public class Main {
 
         // 3.
         try {
-            CategoryDao categoryDao= new CategoryDao();
+            CategoryDao categoryDao= new CategoryDaoImplement();
 
             Category category = categoryDao.findById(66L);
 
