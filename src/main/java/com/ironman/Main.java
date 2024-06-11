@@ -1,7 +1,14 @@
 package com.ironman;
 
+import com.ironman.application.dto.category.CategoryDto;
+import com.ironman.application.dto.category.CategorySmallDto;
+import com.ironman.application.service.CategoryService;
+import com.ironman.application.service.Implement.CategoryServiceImplement;
 import com.ironman.persistence.dao.CategoryDao;
 import com.ironman.persistence.dao.Implement.CategoryDaoImplement;
+import com.ironman.persistence.entity.Category;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -100,15 +107,42 @@ public class Main {
 //        }
 
         // 8.
-        try {
-            CategoryDao categoryDao = new CategoryDaoImplement();
+//        try {
+//            CategoryDao categoryDao = new CategoryDaoImplement();
+//
+//            categoryDao.deleteById(120L);
+//            System.out.println("DeletedId");
+//
+//        } catch (Exception e) {
+//            System.out.println("Error" + e.getMessage());
+//        }
 
-            categoryDao.deleteById(120L);
-            System.out.println("DeletedId");
+        // 9.
+//        try {
+//            CategoryService categoryService = new CategoryServiceImplement();
+//
+//            List<CategorySmallDto> categories = categoryService.findAll();
+//
+//            for (CategorySmallDto category : categories) {
+//                System.out.println("CategoryName[" + category.getId() + "]: " + category.getName());
+//            }
+//
+//        } catch (Exception e) {
+//            System.out.println("Error" + e.getMessage());
+//        }
+
+        // 10.
+        try {
+            CategoryService categoryService = new CategoryServiceImplement();
+
+            CategoryDto category = categoryService.findById(66L);
+
+            System.out.println("CategoryName[" + category.getId() + "]: " + category.getName());
 
         } catch (Exception e) {
             System.out.println("Error" + e.getMessage());
         }
+
 
     }
 }
