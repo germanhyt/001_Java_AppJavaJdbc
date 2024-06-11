@@ -1,14 +1,7 @@
-package com.ironman.dao;
+package com.ironman.persistence.dao;
 
-import com.ironman.dao.Core.CrudDao;
-import com.ironman.entity.Category;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
+import com.ironman.persistence.dao.Core.CrudDao;
+import com.ironman.persistence.entity.Category;
 
 public interface CategoryDao extends CrudDao<Category,Long> {
 

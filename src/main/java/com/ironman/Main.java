@@ -1,12 +1,7 @@
 package com.ironman;
 
-import com.ironman.dao.CategoryDao;
-import com.ironman.dao.Implement.CategoryDaoImplement;
-import com.ironman.dao.Implement.CategoryStoreimplement;
-import com.ironman.entity.Category;
-
-import java.time.LocalDateTime;
-import java.util.List;
+import com.ironman.persistence.dao.CategoryDao;
+import com.ironman.persistence.dao.Implement.CategoryDaoImplement;
 
 public class Main {
     public static void main(String[] args) {

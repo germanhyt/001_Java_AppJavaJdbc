@@ -1,4 +1,4 @@
-package com.ironman.entity;
+package com.ironman.persistence.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

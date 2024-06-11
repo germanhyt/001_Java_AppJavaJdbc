@@ -1,8 +1,8 @@
-package com.ironman.dao.Implement;
+package com.ironman.persistence.dao.Implement;
 
-import com.ironman.dao.CategoryDao;
-import com.ironman.dao.Core.ConnectionCore;
-import com.ironman.entity.Category;
+import com.ironman.persistence.dao.CategoryDao;
+import com.ironman.persistence.dao.Core.ConnectionCore;
+import com.ironman.persistence.entity.Category;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

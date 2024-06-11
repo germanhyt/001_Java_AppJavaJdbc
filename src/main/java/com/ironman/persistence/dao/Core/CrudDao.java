@@ -1,4 +1,4 @@
-package com.ironman.dao.Core;
+package com.ironman.persistence.dao.Core;
 import java.util.List;
 
 public interface CrudDao<T,ID>{
