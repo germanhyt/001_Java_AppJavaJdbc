@@ -5,28 +5,24 @@ import java.sql.DriverManager;
 
 public class ConnectionCore {
 
-    public Connection getConnection(){
+    public Connection getConnection() throws Exception {
         // Attributes
-            String hostname = "dpg-cpa0r9tds78s73cp2ueg-a.oregon-postgres.render.com";
-            String port ="5432";
-            String dbName= "restaurant_management_db";
-            String userName= "developer";
-            String password= "Uj65aOw7qX1OqalviBjSpn4EPiubf468";
+        String hostname = "dpg-cpa0r9tds78s73cp2ueg-a.oregon-postgres.render.com";
+        String port = "5432";
+        String dbName = "restaurant_management_db";
+        String userName = "developer";
+        String password = "Uj65aOw7qX1OqalviBjSpn4EPiubf468";
 
-        // Proccess
-        try{
-            // Load Driver
-            Class.forName( "org.postgresql.Driver");
+        //- Process
 
-            // URL Connection
-            String url ="jdbc:postgresql://"+hostname+":"+port+"/"+dbName;
+        // Load Driver
+        Class.forName("org.postgresql.Driver");
 
-            //Result
-            return DriverManager.getConnection(url,userName, password);
-        }catch (Exception e) {
-            System.out.println("ConnectionCore::getConnection::Error:"+e.getMessage());
-        }
+        // URL Connection
+        String url = "jdbc:postgresql://" + hostname + ":" + port + "/" + dbName;
 
-        return null;
+        //Result
+        return DriverManager.getConnection(url, userName, password);
+
     }
 }
