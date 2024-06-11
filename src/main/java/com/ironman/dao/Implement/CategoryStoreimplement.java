@@ -1,33 +1,27 @@
-package com.ironman.dao;
+package com.ironman.dao.Implement;
 
+import com.ironman.dao.CategoryDao;
+import com.ironman.dao.ConnectionCore;
 import com.ironman.entity.Category;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public interface CategoryDao {
+public class CategoryStoreimplement implements CategoryDao {
 
-    List<Category> findAll() throws Exception;
-    Category findById(Long id) throws Exception;
-
-    int create(Category category) throws Exception;
-    int update(Long id, Category category) throws Exception;
-    void deleteById(Long id) throws Exception;
-
-
-    /*
+    @Override
     public List<Category> findAll() throws Exception {
         // Attributes
-        List<Category> categories = new ArrayList<>();
+        List<Category> categories = new LinkedList<>();
         Category category;
         String sqlQuery;
 
         // sql query
-        sqlQuery = "select id, name, description , url_key , state , created_at , updated_at  from categories";
+        sqlQuery = "select * from categories";
 
         // process
         try (
@@ -65,6 +59,7 @@ public interface CategoryDao {
         return categories;
     }
 
+    @Override
     public Category findById(Long id) throws Exception {
         // Attributes
         Category category = null;
@@ -113,5 +108,18 @@ public interface CategoryDao {
         return category;
     }
 
-    */
+    @Override
+    public int create(Category category) throws Exception {
+        return 0;
+    }
+
+    @Override
+    public int update(Long id, Category category) throws Exception {
+        return 0;
+    }
+
+    @Override
+    public void deleteById(Long id) throws Exception {
+
+    }
 }

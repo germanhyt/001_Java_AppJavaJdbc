@@ -2,8 +2,10 @@ package com.ironman;
 
 import com.ironman.dao.CategoryDao;
 import com.ironman.dao.Implement.CategoryDaoImplement;
+import com.ironman.dao.Implement.CategoryStoreimplement;
 import com.ironman.entity.Category;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Main {
@@ -40,13 +42,74 @@ public class Main {
 //          System.out.println("Error"+e.getMessage());
 //      }
 
-        // 3.
+        // 4.
+//        try {
+//            CategoryDao categoryDao= new CategoryDaoImplement();
+//
+//            Category category = categoryDao.findById(66L);
+//
+//            System.out.println("CategoryName[" + category.getId() + "]: " + category.getName());
+//
+//        } catch (Exception e) {
+//            System.out.println("Error" + e.getMessage());
+//        }
+
+        // 5.
+//        try {
+//            CategoryDao categoryDao= new CategoryStoreimplement();
+//
+//            Category category = categoryDao.findById(66L);
+//
+//            System.out.println("CategoryName[" + category.getId() + "]: " + category.getName());
+//
+//        } catch (Exception e) {
+//            System.out.println("Error" + e.getMessage());
+//        }
+
+        // 6.
+//        try {
+//            CategoryDao categoryDao= new CategoryDaoImplement();
+//
+//            Category category = new Category();
+//            category.setName("testCreate2");
+//            category.setDescription("sin detalles");
+//            category.setUrlKey("category-A");
+//            category.setState("A");
+//            category.setCreateAt(LocalDateTime.now());
+//
+//            int result= categoryDao.create(category);
+//
+//            System.out.println("Create: "+ result);
+//
+//        } catch (Exception e) {
+//            System.out.println("Error" + e.getMessage());
+//        }
+//
+        // 7.
+//        try {
+//            CategoryDao categoryDao = new CategoryDaoImplement();
+//
+//            Category category = new Category();
+//            category.setName("TestCreate2");
+//            category.setDescription("sin detalles");
+//            category.setUrlKey("category-A");
+//            category.setState("A");
+//            category.setUpdateTime(LocalDateTime.now());
+//
+//            int result = categoryDao.update(120L, category);
+//
+//            System.out.println("Update: " + result);
+//
+//        } catch (Exception e) {
+//            System.out.println("Error" + e.getMessage());
+//        }
+
+        // 8.
         try {
-            CategoryDao categoryDao= new CategoryDaoImplement();
+            CategoryDao categoryDao = new CategoryDaoImplement();
 
-            Category category = categoryDao.findById(66L);
-
-            System.out.println("CategoryName[" + category.getId() + "]: " + category.getName());
+            categoryDao.deleteById(120L);
+            System.out.println("DeletedId");
 
         } catch (Exception e) {
             System.out.println("Error" + e.getMessage());
